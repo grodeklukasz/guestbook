@@ -2,10 +2,15 @@
 
 namespace App\Controller;
 
+use App\Repository\ConferenceRepository;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
+use Twig\Environment;
+
 
 class ConferenceController extends AbstractController
 {
@@ -13,20 +18,12 @@ class ConferenceController extends AbstractController
      * @Route("/", name="homepage")
      * 
      */
-    public function index(): Response
+    public function index(Environment $twig, ConferenceRepository $conferenceRepository): Response
     {
 
-
-    
-        return new Response(
-            <<<EOF
-            <html>
-                <body>
-                    
-                    <img src="images/under_construction.png" />
-                </body>
-            </html>
-            EOF
-        );
+        return new Response($twig->render('conference/index.html.twig', [
+            'conferences' => $conferenceRepository->findAll(),
+            ]));
+  
     }
 }
