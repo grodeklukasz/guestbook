@@ -10,25 +10,19 @@ use Symfony\Component\Routing\Annotation\Route;
 class ConferenceController extends AbstractController
 {
     /**
-     * @Route("/{name}", name="homepage")
+     * @Route("/", name="homepage")
      * 
      */
-    public function index(string $name=''): Response
+    public function index(): Response
     {
-        $greet = '';
 
-        
 
-        if($name)
-        {
-            $greet = sprintf('<h1>Hello %s! </h1>',htmlspecialchars($name));
-        }
-
+    
         return new Response(
             <<<EOF
             <html>
                 <body>
-                    $greet
+                    
                     <img src="images/under_construction.png" />
                 </body>
             </html>
