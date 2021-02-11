@@ -17,7 +17,7 @@
             {% endif %}
             <h4>{{ comment.author }}</h4>
             <small>
-                {{ comment.createdAt|format_datetime('mediium', 'short') }}
+                {{ comment.createdAt|format_datetime('medium', 'short') }}
             </small>
             <p>{{ comment.text }}</p>
         {% endfor %}
